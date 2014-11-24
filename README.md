@@ -13,4 +13,6 @@ Resources
 ---------
 * [Buildbot](http://buildbot.net)
 * [Docker.com](https://www.docker.com/)
+  * [Docker cheat-sheep](https://github.com/wsargent/docker-cheat-sheet)
+  * [Docker Remote API](http://docs.docker.com/reference/api/docker_remote_api_v1.9/), The daemon listens on unix:///var/run/docker.sock but you can bind Docker to another host/port or a Unix socket.
 * [Buildbot docker image in Gentoo](https://registry.hub.docker.com/u/samuelololol/gentoo-buildbot/)

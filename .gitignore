@@ -55,3 +55,6 @@ target/
 
 # ssh key
 id_rsa*
+
+# backup files
+*.bak

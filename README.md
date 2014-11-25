@@ -4,7 +4,7 @@ BuildbotDocker
 An Easy CI environment for development. Built from custom buildbot in docker image. 
 
 1. Master/slave configs for a git-repo project
-2. commit-triggered built
+2. Commit-triggered built
 3. Composed of multiple container for full CI set
 4. [nice to have] deployment with docker container by docker API
 
@@ -14,9 +14,9 @@ Requirement
 * [Docker-1.3.2](http://github.com/docker/docker/blob/v1.3.2/CHANGELOG.md#132-2014-11-20)
 * Buildbot Docker image: [samuelololol/gentoo-buildbot:0.9](https://registry.hub.docker.com/u/samuelololol/gentoo-buildbot/tags/manage/)
   * 1 buildmaster/ 1 buildslave installed
-  * configuration files from host(default configuration setting template are located in [this repository](https://github.com/samuelololol/BuildbotDocker/tree/master/buildbot)) are mount at `/buildbot` in container, `/var/lib/buildmaster/master.cfg` is softlinked from there
+  * Configuration files from host(default configuration setting template are located in [this repository](https://github.com/samuelololol/BuildbotDocker/tree/master/buildbot)) are mount at `/buildbot` in container, `/var/lib/buildmaster/master.cfg` is softlinked from there
 * Git
-  *  ssh key(private/public keys), which have been [ignored from repo](https://github.com/samuelololol/BuildbotDocker/blob/master/.gitignore#L57), add manually with following permission
+  * If the repository protocol is ssh://, prepare SSH key(private/public keys), which have been [ignored from repo](https://github.com/samuelololol/BuildbotDocker/blob/master/.gitignore#L57), add manually with following permission
 ```
       -rw------- 1 buildbot buildbot 1679 Nov 13 03:17 id_rsa
       -rwxrwxrwx 1 buildbot buildbot  399 Nov 13 15:38 id_rsa.pub

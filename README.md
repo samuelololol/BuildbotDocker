@@ -14,7 +14,7 @@ Requirement
 * [Docker-1.3.2](http://github.com/docker/docker/blob/v1.3.2/CHANGELOG.md#132-2014-11-20)
 * Buildbot Docker image: [samuelololol/gentoo-buildbot:0.9](https://registry.hub.docker.com/u/samuelololol/gentoo-buildbot/tags/manage/)
   * 1 buildmaster/ 1 buildslave installed
-  * configuration files from host(default configuration setting template are located in this repository) are mount at `/buildbot` in container, `/var/lib/buildmaster/master.cfg` is softlinked from there
+  * configuration files from host(default configuration setting template are located in [this repository](https://github.com/samuelololol/BuildbotDocker/tree/master/buildbot)) are mount at `/buildbot` in container, `/var/lib/buildmaster/master.cfg` is softlinked from there
 * Git
 
 

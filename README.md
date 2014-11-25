@@ -16,8 +16,11 @@ Requirement
   * 1 buildmaster/ 1 buildslave installed
   * configuration files from host(default configuration setting template are located in [this repository](https://github.com/samuelololol/BuildbotDocker/tree/master/buildbot)) are mount at `/buildbot` in container, `/var/lib/buildmaster/master.cfg` is softlinked from there
 * Git
-
-
+  *  ssh key(private/public keys), which have been [ignored from repo](https://github.com/samuelololol/BuildbotDocker/blob/master/.gitignore#L57), add manually with following permission
+```
+      -rw------- 1 buildbot buildbot 1679 Nov 13 03:17 id_rsa
+      -rwxrwxrwx 1 buildbot buildbot  399 Nov 13 15:38 id_rsa.pub
+```
 
 Resources
 ---------

@@ -15,6 +15,17 @@ Requirement
 * Buildbot Docker image: [samuelololol/gentoo-buildbot:0.9](https://registry.hub.docker.com/u/samuelololol/gentoo-buildbot/tags/manage/)
   * 1 buildmaster/ 1 buildslave installed
   * Configuration files from host(default configuration setting template are located in [this repository](https://github.com/samuelololol/BuildbotDocker/tree/master/buildbot)) are mount at `/buildbot` in container, `/var/lib/buildmaster/master.cfg` is softlinked from there
+  * /var/lib/buildmaster
+
+```
+      lrwxrwxrwx 1 buildbot buildbot     14 Nov 25 07:14 bin -> /buildbot/bin/
+      lrwxrwxrwx 1 buildbot buildbot     29 Nov 25 07:20 buildbot.tac -> /buildbot/buildbot.tac.master
+      lrwxrwxrwx 1 buildbot buildbot     20 Nov 25 07:20 master.cfg -> /buildbot/master.cfg
+```
+  * /var/lib/buildmaster
+```
+      lrwxrwxrwx 1 buildbot buildbot     28 Nov 25 07:22 buildbot.tac -> /buildbot/buildbot.tac.slave
+```
 * Git
   * If the repository protocol is ssh://, prepare SSH key(private/public keys), which have been [ignored from repo](https://github.com/samuelololol/BuildbotDocker/blob/master/.gitignore#L57), add manually with following permission
 ```

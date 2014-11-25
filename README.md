@@ -28,7 +28,7 @@ Requirement
 * Git
   * If the repository protocol is ssh://, prepare SSH key(private/public keys), which have been [ignored from repo](https://github.com/samuelololol/BuildbotDocker/blob/master/.gitignore#L57), add manually with following permission
 ```
-     /var/lib/buildmaster/bin
+      /var/lib/buildmaster/bin:
         -rw------- 1 buildbot buildbot 1679 Nov 13 03:17 id_rsa
         -rwxrwxrwx 1 buildbot buildbot  399 Nov 13 15:38 id_rsa.pub
 ```

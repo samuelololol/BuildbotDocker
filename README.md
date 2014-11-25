@@ -9,6 +9,14 @@ An Easy CI environment for development. Built from custom buildbot in docker ima
 4. [nice to have] deployment with docker container by docker API
 
 
+Requirement
+----------
+* [Docker-1.3.2](://github.com/docker/docker/blob/v1.3.2/CHANGELOG.md#132-2014-11-20)
+* [samuelololol/gentoo-buildbot:0.9](https://registry.hub.docker.com/u/samuelololol/gentoo-buildbot/tags/manage/)
+* Git
+
+
+
 Resources
 ---------
 * [Buildbot](http://buildbot.net)

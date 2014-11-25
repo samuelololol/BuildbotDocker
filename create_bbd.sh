@@ -8,7 +8,7 @@ HOST_BDD_PORT=8010
 CLIENT_MOUNT_POINT="/buildbot"
 
 
-CONTAINER_ID=`docker run -d --name bbd -p $HOST_BDD_PORT:8010 -v $BBD_DIR:$CLIENT_MOUNT_POINT samuelololol/gentoo-buildbot`
+CONTAINER_ID=`docker run -d --name bbd -p $HOST_BDD_PORT:8010 -v $BBD_DIR:$CLIENT_MOUNT_POINT samuelololol/gentoo-buildbot:0.9`
 echo $CONTAINER_ID > $ID_FILE
 echo "bbd sha1: "$CONTAINER_ID
 echo ""

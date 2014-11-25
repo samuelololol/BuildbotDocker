@@ -1,0 +1,63 @@
+# ---------
+# prepare git/ssh env config
+# ---------
+#import subprocess
+#from subprocess import PIPE
+#cmd = ['ssh-agent']
+#p = subprocess.Popen(cmd, stdout = PIPE, shell=False, stderr=PIPE)
+#raw_list = p.communicate()[0].replace('\n','').split(';')
+#print 'master add agent return code: %s' % p.returncode
+#raw_list = [f for f in raw_list if len(f) > 2]
+#rtn_list = raw_list
+#rtn_list = [f for f in rtn_list if 'SSH' in f]
+#rtn_list = [f for f in rtn_list if '=' in f]
+#rtn_list = [f for f in rtn_list if 'export' not in f]
+#rtn_list = [f.split('=') for f in rtn_list]
+#rtn_dict = dict(rtn_list)
+#print 'master env dict: %s' % rtn_dict
+#cmd = ['ssh-add', '/var/lib/buildmaster/bin/id_rsa']
+#p = subprocess.Popen(cmd, stdout = PIPE, shell=False, stderr=PIPE, env=rtn_dict)
+#raw_list = p.communicate()[0].replace('\n','').split(';')
+#print 'master add private key return code: %s' % p.returncode
+# ---------
+# add
+# ---------
+import os
+os.environ['GIT_SSH'] = '/var/lib/buildmaster/bin/mygit.sh'
+#for item in rtn_dict.items():
+#    os.environ[item[0]] = item[1]
+##os.environ['GNOME_KEYRING_PID'] = ''
+##os.environ['GNOME_KEYRING_CONTROL'] = ''
+#print 'master buildbot.tac: %s' % os.environ
+# ---------
+
+
+from twisted.application import service
+from buildbot.master import BuildMaster
+
+basedir = '/var/lib/buildmaster'
+rotateLength = 10000000
+maxRotatedFiles = 10
+configfile = 'master.cfg'
+
+# Default umask for server
+umask = None
+
+# if this is a relocatable tac file, get the directory containing the TAC
+if basedir == '.':
+    import os.path
+    basedir = os.path.abspath(os.path.dirname(__file__))
+
+# note: this line is matched against to check that this is a buildmaster
+# directory; do not edit it.
+application = service.Application('buildmaster')
+from twisted.python.logfile import LogFile
+from twisted.python.log import ILogObserver, FileLogObserver
+logfile = LogFile.fromFullPath(os.path.join(basedir, "twistd.log"), rotateLength=rotateLength,
+                                maxRotatedFiles=maxRotatedFiles)
+application.setComponent(ILogObserver, FileLogObserver(logfile).emit)
+
+m = BuildMaster(basedir, configfile, umask)
+m.setServiceParent(application)
+m.log_rotation.rotateLength = rotateLength
+m.log_rotation.maxRotatedFiles = maxRotatedFiles

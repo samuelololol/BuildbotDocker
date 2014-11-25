@@ -10,7 +10,7 @@ An Easy CI environment for development. Built from custom buildbot in docker ima
 
 
 Requirement
-----------
+-----------
 * [Docker-1.3.2](http://github.com/docker/docker/blob/v1.3.2/CHANGELOG.md#132-2014-11-20)
 * Buildbot Docker image: [samuelololol/gentoo-buildbot:0.9](https://registry.hub.docker.com/u/samuelololol/gentoo-buildbot/tags/manage/)
   * 1 buildmaster/ 1 buildslave installed
@@ -32,6 +32,15 @@ Requirement
         -rw------- 1 buildbot buildbot 1679 Nov 13 03:17 id_rsa
         -rwxrwxrwx 1 buildbot buildbot  399 Nov 13 15:38 id_rsa.pub
 ```
+
+Install and Setup
+-----------------
+1. install git/docker
+2. $ git pull https://github.com/samuelololol/BuildbotDocker.git
+3. edit buildbot/master.cfg
+4. $ ./create_bbd.sh
+5. link to [buildbot portal](http://127.0.0.1:8010/)
+
 
 Resources
 ---------

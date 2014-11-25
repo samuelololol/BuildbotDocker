@@ -38,8 +38,8 @@ Install and Setup
 1. install git/docker
 2. $ git pull https://github.com/samuelololol/BuildbotDocker.git
 3. edit configs
-  1. create_bbd.sh container settings
-  2. buildbot/master.cfg: master settings
+  1. [create_bbd.sh](https://github.com/samuelololol/BuildbotDocker/blob/master/create_bbd.sh): container settings
+  2. [buildbot/master.cfg](https://github.com/samuelololol/BuildbotDocker/blob/master/buildbot/master.cfg): master settings
 4. $ ./create_bbd.sh
 5. link to [buildbot portal](http://127.0.0.1:8010/)
 

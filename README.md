@@ -17,6 +17,6 @@ Resources
   * [Docker Remote API](http://docs.docker.com/reference/api/docker_remote_api_v1.9/), The daemon listens on unix:///var/run/docker.sock but you can bind Docker to another host/port or a Unix socket.
 * [Buildbot docker image in Gentoo](https://registry.hub.docker.com/u/samuelololol/gentoo-buildbot/)
 * Slides
-  * [Buildbot in Docker](http://slidedeck.io/mboersma/buildbot-docker-presentation)
   * [Continuous integration with docker, buildbot and git](http://www.slideshare.net/Adieu/continuous-integration-with-docker-buildbot-and-git)
+  * [Buildbot in Docker](http://slidedeck.io/mboersma/buildbot-docker-presentation)
 

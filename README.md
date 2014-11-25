@@ -1,7 +1,7 @@
 BuildbotDocker
 ==============
 
-Custom buildbot in docker. An Easy CI environment for development.
+An Easy CI environment for development. Built from custom buildbot in docker image. 
 
 1. Master/slave configs for a git-repo project
 2. Setting for a push-triggered built

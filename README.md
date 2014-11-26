@@ -14,21 +14,11 @@ Requirement
 * [Docker-1.3.2](http://github.com/docker/docker/blob/v1.3.2/CHANGELOG.md#132-2014-11-20)
 * Buildbot Docker image: [samuelololol/gentoo-buildbot:0.9](https://registry.hub.docker.com/u/samuelololol/gentoo-buildbot/tags/manage/), which contains:
   * 1 buildmaster/ 1 buildslave installed
-  * Configuration files from host(default configuration setting template are located in [this repository](https://github.com/samuelololol/BuildbotDocker/tree/master/buildbot)) are mount at `/buildbot` in container, `/var/lib/buildmaster/master.cfg` is already softlinked from there
-  * /var/lib/buildmaster and /var/lib/buildslave
-
+  * Deployment is described by [Dockerfile](https://github.com/samuelololol/BuildbotDocker/blob/master/Dockerfile)
+  * Git, if the repository protocol is ssh://, prepare SSH key(private/public keys, which have been [ignored from repo](https://github.com/samuelololol/BuildbotDocker/blob/master/.gitignore#L57)), add manually under repo path: [buildbot/bin](https://github.com/samuelololol/BuildbotDocker/tree/master/buildbot/bin)
 ```
-      /var/lib/buildmaster: 
-        lrwxrwxrwx 1 buildbot buildbot     14 Nov 25 07:14 bin -> /buildbot/bin/
-        lrwxrwxrwx 1 buildbot buildbot     29 Nov 25 07:20 buildbot.tac -> /buildbot/buildbot.tac.master
-        lrwxrwxrwx 1 buildbot buildbot     20 Nov 25 07:20 master.cfg -> /buildbot/master.cfg
-      /var/lib/buildslave:
-        lrwxrwxrwx 1 buildbot buildbot     28 Nov 25 07:22 buildbot.tac -> /buildbot/buildbot.tac.slave
-```
-* Git
-  * If the repository protocol is ssh://, prepare SSH key(private/public keys), which have been [ignored from repo](https://github.com/samuelololol/BuildbotDocker/blob/master/.gitignore#L57), add manually with following permission
-```
-      /var/lib/buildmaster/bin:
+      BuildbotDocker/buildbot/bin:
+        ..
         -rw------- 1 buildbot buildbot 1679 Nov 13 03:17 id_rsa
         -rwxrwxrwx 1 buildbot buildbot  399 Nov 13 15:38 id_rsa.pub
 ```
@@ -40,8 +30,9 @@ Install and Setup
 3. edit configs
   1. [create_bbd.sh](https://github.com/samuelololol/BuildbotDocker/blob/master/create_bbd.sh): container settings
   2. [buildbot/master.cfg](https://github.com/samuelololol/BuildbotDocker/blob/master/buildbot/master.cfg): master settings
+  3. (Optional) prepare ssh keys to [buildbot/bin](https://github.com/samuelololol/BuildbotDocker/tree/master/buildbot/bin)
 4. $ ./create_bbd.sh
-5. link to [buildbot portal](http://127.0.0.1:8010/)
+5. link to [buildbot portal(http://127.0.0.1:8010/)](http://127.0.0.1:8010/)
 
 
 Resources

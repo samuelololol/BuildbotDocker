@@ -12,7 +12,7 @@ An Easy CI environment for development. Built from custom buildbot in docker ima
 Requirement
 -----------
 * [Docker-1.3.2](http://github.com/docker/docker/blob/v1.3.2/CHANGELOG.md#132-2014-11-20)
-* Buildbot Docker image: [samuelololol/gentoo-buildbot:0.9](https://registry.hub.docker.com/u/samuelololol/gentoo-buildbot/tags/manage/), which contains:
+* Buildbot Docker image: [samuelololol/gentoo-buildbot:0.8](https://registry.hub.docker.com/u/samuelololol/gentoo-buildbot/tags/manage/), which contains:
   * 1 master/ 1 slave installed
   * Deployment is described by [Dockerfile](https://github.com/samuelololol/BuildbotDocker/blob/master/Dockerfile)
 * Using privilege repository, prepare SSH key(private/public keys, which have been [ignored from repository](https://github.com/samuelololol/BuildbotDocker/blob/master/.gitignore#L57)), add manually under the path: [buildbot/bin](https://github.com/samuelololol/BuildbotDocker/tree/master/buildbot/bin)

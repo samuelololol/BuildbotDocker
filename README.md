@@ -37,7 +37,7 @@ Install and Setup
 5. $ ./create_bbd.sh [buildbot-portal-port]
 6. Links to [buildbot portal(http://127.0.0.1:8010/)](http://127.0.0.1:8010/)
 
-Delete or Remove Image
+Delete container or Remove image
 ----------------------
 * ./delete_bbd.sh
 * ./remove_image.sh

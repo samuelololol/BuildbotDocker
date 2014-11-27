@@ -28,9 +28,9 @@ Install and Setup
 1. install git/docker
 2. $ git pull https://github.com/samuelololol/BuildbotDocker.git
 3. edit configs
-  1. (Recommanded)[create_bbd.sh](https://github.com/samuelololol/BuildbotDocker/blob/master/create_bbd.sh): container settings
-  2. (Recommanded)[buildbot/master.cfg](https://github.com/samuelololol/BuildbotDocker/blob/master/buildbot/master.cfg): master settings
-  1. (Optional)[prepare_image.sh](https://github.com/samuelololol/BuildbotDocker/blob/master/prepare_image.sh): image settings or assign prepared-buildbot folder
+  1. [buildbot/master.cfg](https://github.com/samuelololol/BuildbotDocker/blob/master/buildbot/master.cfg): master settings(repo path/branch name)
+  2. (Recommanded)[create_bbd.sh](https://github.com/samuelololol/BuildbotDocker/blob/master/create_bbd.sh): container settings(buildbot portal port)
+  1. (Optional)[prepare_image.sh](https://github.com/samuelololol/BuildbotDocker/blob/master/prepare_image.sh): image settings(image name), or assign prepared-buildbot folder
   4. (Optional)[Dockerfile](https://github.com/samuelololol/BuildbotDocker/blob/master/Dockerfile): Docker image setting
   5. (Optional) prepare ssh keys to [buildbot/bin](https://github.com/samuelololol/BuildbotDocker/tree/master/buildbot/bin)
 4. $ ./prepare_image.sh [<prepared-buildbot folder path>]

@@ -28,12 +28,19 @@ Install and Setup
 1. install git/docker
 2. $ git pull https://github.com/samuelololol/BuildbotDocker.git
 3. edit configs
-  1. [create_bbd.sh](https://github.com/samuelololol/BuildbotDocker/blob/master/create_bbd.sh): container settings
-  2. [buildbot/master.cfg](https://github.com/samuelololol/BuildbotDocker/blob/master/buildbot/master.cfg): master settings
-  3. (Optional) prepare ssh keys to [buildbot/bin](https://github.com/samuelololol/BuildbotDocker/tree/master/buildbot/bin)
-4. $ ./create_bbd.sh
-5. link to [buildbot portal(http://127.0.0.1:8010/)](http://127.0.0.1:8010/)
+  1. [Dockerfile](https://github.com/samuelololol/BuildbotDocker/blob/master/Dockerfile): Docker image setting
+  2. [prepare_image.sh](https://github.com/samuelololol/BuildbotDocker/blob/master/prepare_image.sh): image settings
+  3. [create_bbd.sh](https://github.com/samuelololol/BuildbotDocker/blob/master/create_bbd.sh): container settings
+  4. [buildbot/master.cfg](https://github.com/samuelololol/BuildbotDocker/blob/master/buildbot/master.cfg): master settings
+  5. (Optional) prepare ssh keys to [buildbot/bin](https://github.com/samuelololol/BuildbotDocker/tree/master/buildbot/bin)
+4. $ ./prepare_image.sh
+5. $ ./create_bbd.sh
+6. link to [buildbot portal(http://127.0.0.1:8010/)](http://127.0.0.1:8010/)
 
+Delete or Remove Image
+----------------------
+* ./delete_bbd.sh
+* ./remove_image.sh
 
 Resources
 ---------

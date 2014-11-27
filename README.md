@@ -3,7 +3,7 @@ BuildbotDocker
 
 An Easy CI environment for development. Built from custom buildbot in docker image. 
 
-1. Master/slave configs for a git-repo project
+1. Master/slave configs for a git-repository project
 2. Commit-triggered built
 3. Composed of multiple container for full CI set
 4. [nice to have] deployment with docker container by docker API
@@ -15,7 +15,7 @@ Requirement
 * Buildbot Docker image: [samuelololol/gentoo-buildbot:0.9](https://registry.hub.docker.com/u/samuelololol/gentoo-buildbot/tags/manage/), which contains:
   * 1 master/ 1 slave installed
   * Deployment is described by [Dockerfile](https://github.com/samuelololol/BuildbotDocker/blob/master/Dockerfile)
-  * Git, if the repository protocol is ssh://, prepare SSH key(private/public keys, which have been [ignored from repo](https://github.com/samuelololol/BuildbotDocker/blob/master/.gitignore#L57)), add manually under repo path: [buildbot/bin](https://github.com/samuelololol/BuildbotDocker/tree/master/buildbot/bin)
+  * Git, if the repository protocol is ssh://, prepare SSH key(private/public keys, which have been [ignored from repository](https://github.com/samuelololol/BuildbotDocker/blob/master/.gitignore#L57)), add manually under repository path: [buildbot/bin](https://github.com/samuelololol/BuildbotDocker/tree/master/buildbot/bin)
 ```
       BuildbotDocker/buildbot/bin:
         ..
@@ -28,11 +28,11 @@ Install and Setup
 1. Install git/docker
 2. $ git pull https://github.com/samuelololol/BuildbotDocker.git
 3. Edit configs
-  1. [buildbot/master.cfg](https://github.com/samuelololol/BuildbotDocker/blob/master/buildbot/master.cfg): master settings(repo path/branch name)
+  1. [buildbot/master.cfg](https://github.com/samuelololol/BuildbotDocker/blob/master/buildbot/master.cfg): master settings(repository path/branch name)
   2. (Recommanded) [create_bbd.sh](https://github.com/samuelololol/BuildbotDocker/blob/master/create_bbd.sh): container settings(buildbot portal port)
   1. (Optional) [prepare_image.sh](https://github.com/samuelololol/BuildbotDocker/blob/master/prepare_image.sh): image settings(image name), or assign prepared-buildbot folder
   4. (Optional) [Dockerfile](https://github.com/samuelololol/BuildbotDocker/blob/master/Dockerfile): Docker image setting
-  5. (Optional) Prepare ssh keys to [buildbot/bin](https://github.com/samuelololol/BuildbotDocker/tree/master/buildbot/bin)
+  5. (Optional) Prepare ssh keys to [buildbot/bin](https://github.com/samuelololol/BuildbotDocker/tree/master/buildbot/bin) folder if using any privilege repository
 4. $ ./prepare_image.sh [<prepared-buildbot folder path>]
 5. $ ./create_bbd.sh
 6. Links to [buildbot portal(http://127.0.0.1:8010/)](http://127.0.0.1:8010/)

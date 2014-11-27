@@ -15,7 +15,7 @@ Requirement
 * Buildbot Docker image: [samuelololol/gentoo-buildbot:0.9](https://registry.hub.docker.com/u/samuelololol/gentoo-buildbot/tags/manage/), which contains:
   * 1 master/ 1 slave installed
   * Deployment is described by [Dockerfile](https://github.com/samuelololol/BuildbotDocker/blob/master/Dockerfile)
-  * Git, if the repository protocol is ssh://, prepare SSH key(private/public keys, which have been [ignored from repository](https://github.com/samuelololol/BuildbotDocker/blob/master/.gitignore#L57)), add manually under repository path: [buildbot/bin](https://github.com/samuelololol/BuildbotDocker/tree/master/buildbot/bin)
+* Using privilege repository, prepare SSH key(private/public keys, which have been [ignored from repository](https://github.com/samuelololol/BuildbotDocker/blob/master/.gitignore#L57)), add manually under the path: [buildbot/bin](https://github.com/samuelololol/BuildbotDocker/tree/master/buildbot/bin)
 ```
       BuildbotDocker/buildbot/bin:
         ..

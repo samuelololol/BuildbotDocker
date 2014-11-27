@@ -31,7 +31,7 @@ if [ "IMAGE_NAME" == "" ]; then
     IMAGE_NAME="bbd_img"
 else
     RPOSTFIX=$(cat /dev/urandom | tr -dc 'a-z0-9' | fold -w 10 | head -n 1)
-    IMAGE_NAME="bbd_img-"$RPOSTFIX
+    IMAGE_NAME="bbd_img_"$RPOSTFIX
 fi
 
 

@@ -13,7 +13,7 @@ Requirement
 -----------
 * [Docker-1.3.2](http://github.com/docker/docker/blob/v1.3.2/CHANGELOG.md#132-2014-11-20)
 * Buildbot Docker image: [samuelololol/gentoo-buildbot:0.9](https://registry.hub.docker.com/u/samuelololol/gentoo-buildbot/tags/manage/), which contains:
-  * 1 buildmaster/ 1 buildslave installed
+  * 1 master/ 1 slave installed
   * Deployment is described by [Dockerfile](https://github.com/samuelololol/BuildbotDocker/blob/master/Dockerfile)
   * Git, if the repository protocol is ssh://, prepare SSH key(private/public keys, which have been [ignored from repo](https://github.com/samuelololol/BuildbotDocker/blob/master/.gitignore#L57)), add manually under repo path: [buildbot/bin](https://github.com/samuelololol/BuildbotDocker/tree/master/buildbot/bin)
 ```
@@ -25,17 +25,17 @@ Requirement
 
 Install and Setup
 -----------------
-1. install git/docker
+1. Install git/docker
 2. $ git pull https://github.com/samuelololol/BuildbotDocker.git
-3. edit configs
+3. Edit configs
   1. [buildbot/master.cfg](https://github.com/samuelololol/BuildbotDocker/blob/master/buildbot/master.cfg): master settings(repo path/branch name)
-  2. (Recommanded)[create_bbd.sh](https://github.com/samuelololol/BuildbotDocker/blob/master/create_bbd.sh): container settings(buildbot portal port)
-  1. (Optional)[prepare_image.sh](https://github.com/samuelololol/BuildbotDocker/blob/master/prepare_image.sh): image settings(image name), or assign prepared-buildbot folder
-  4. (Optional)[Dockerfile](https://github.com/samuelololol/BuildbotDocker/blob/master/Dockerfile): Docker image setting
-  5. (Optional) prepare ssh keys to [buildbot/bin](https://github.com/samuelololol/BuildbotDocker/tree/master/buildbot/bin)
+  2. (Recommanded) [create_bbd.sh](https://github.com/samuelololol/BuildbotDocker/blob/master/create_bbd.sh): container settings(buildbot portal port)
+  1. (Optional) [prepare_image.sh](https://github.com/samuelololol/BuildbotDocker/blob/master/prepare_image.sh): image settings(image name), or assign prepared-buildbot folder
+  4. (Optional) [Dockerfile](https://github.com/samuelololol/BuildbotDocker/blob/master/Dockerfile): Docker image setting
+  5. (Optional) Prepare ssh keys to [buildbot/bin](https://github.com/samuelololol/BuildbotDocker/tree/master/buildbot/bin)
 4. $ ./prepare_image.sh [<prepared-buildbot folder path>]
 5. $ ./create_bbd.sh
-6. link to [buildbot portal(http://127.0.0.1:8010/)](http://127.0.0.1:8010/)
+6. Links to [buildbot portal(http://127.0.0.1:8010/)](http://127.0.0.1:8010/)
 
 Delete or Remove Image
 ----------------------

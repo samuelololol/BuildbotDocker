@@ -34,7 +34,7 @@ Install and Setup
   4. (Optional) [Dockerfile](https://github.com/samuelololol/BuildbotDocker/blob/master/Dockerfile): Docker image setting
   5. (Optional) Prepare ssh keys to [buildbot/bin](https://github.com/samuelololol/BuildbotDocker/tree/master/buildbot/bin) folder if using any privilege repository
 4. $ ./prepare_image.sh [prepared-buildbot-folder-path]
-5. $ ./create_bbd.sh
+5. $ ./create_bbd.sh [buildbot-portal-port]
 6. Links to [buildbot portal(http://127.0.0.1:8010/)](http://127.0.0.1:8010/)
 
 Delete or Remove Image

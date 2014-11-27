@@ -7,6 +7,18 @@ CONTAINER_NAME=$(cat /dev/urandom | tr -dc 'A-Z0-9' | fold -w 10 | head -n 1)
 HOST_BDD_PORT=8010
 IMAGE_ID=`docker images | grep $IMAGE_NAME | awk '{print $3}'`
 
+
+if [ "$#" -ne 1 ]; then
+    echo ""
+    echo "./create_bbd.sh <buildbot portal port>"
+    echo ""
+    echo "use default buildbot port 8010"
+else
+    echo ""
+    echo "use $1 as buildbot port"
+    HOST_BDD_PORT=$1
+fi
+
 CONTAINER_ID=`docker run -d --name $CONTAINER_NAME -p $HOST_BDD_PORT:8010 $IMAGE_NAME`
 
 echo "$CONTAINER_ID $CONTAINER_NAME"> $ID_FILE

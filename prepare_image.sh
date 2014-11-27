@@ -2,6 +2,7 @@
 SOURCE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}"  )" && pwd  )"
 
 if [ "$#" -ne 1 ]; then
+    echo ""
     echo "./prepare_image.sh <buildbot folder path>"
     echo ""
     echo "use default buildbot setting:"

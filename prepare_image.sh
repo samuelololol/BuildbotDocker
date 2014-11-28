@@ -11,11 +11,11 @@ else
     echo ""
     echo "use $1 as buildbot folder"
 
-    rm -rf $SOURCE_DIR/buildbot
     BUILDBOT_FDR=$1
     local_bbd_fdr_name=${1%/}
     local_bbd_fdr_name=${local_bbd_fdr_name##*/}
     if [[ -d $1 ]]; then
+        rm -rf $SOURCE_DIR/buildbot
         cp -r $1 .
         if [ "$local_bbd_fdr_name" != "buildbot" ]; then
             mv $local_bbd_fdr_name buildbot
@@ -27,7 +27,7 @@ fi
 
 DEFAULT_IMAGE_NAME="bbd_img"
 IMAGE_NAME=`docker images | grep $DEFAULT_IMAGE_NAME | awk '{print $1}'`
-if [ "IMAGE_NAME" == "" ]; then
+if [ "$IMAGE_NAME" == "" ]; then
     IMAGE_NAME="bbd_img"
 else
     RPOSTFIX=$(cat /dev/urandom | tr -dc 'a-z0-9' | fold -w 10 | head -n 1)

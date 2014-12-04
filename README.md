@@ -33,8 +33,8 @@ Install and Setup
   1. (Optional) [prepare_image.sh](https://github.com/samuelololol/BuildbotDocker/blob/master/prepare_image.sh): image settings(image name), or assign prepared-buildbot folder
   4. (Optional) [Dockerfile](https://github.com/samuelololol/BuildbotDocker/blob/master/Dockerfile): Docker image setting
   5. (Optional) Prepare ssh keys to [buildbot/bin](https://github.com/samuelololol/BuildbotDocker/tree/master/buildbot/bin) folder if using any privilege repository
-4. $ ./prepare_image.sh [prepared-buildbot-folder-path]
-5. $ ./create_bbd.sh [buildbot-portal-port]
+4. $ ./prepare_image.sh &lt;buildbot folder path&gt; [&lt;dockerfile.diff&gt;]
+5. $ ./create_bbd.sh &lt;bbd image name&gt; [&lt;buildbot portal port&gt;]
 6. Links to [buildbot portal(http://127.0.0.1:8010/)](http://127.0.0.1:8010/)
 
 Delete container or Remove image

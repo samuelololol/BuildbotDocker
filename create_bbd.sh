@@ -27,7 +27,7 @@ else
     exit 42
 fi
 
-CONTAINER_ID=`docker run -d --name $CONTAINER_NAME -p $HOST_BDD_PORT:8010 -v /var/run/docker.sock:/var/run/docker.sock $IMAGE_NAME`
+CONTAINER_ID=`docker run -d -v /var/run/docker.sock:/var/run/docker.sock --name $CONTAINER_NAME -p $HOST_BDD_PORT:8010 $IMAGE_NAME`
 
 if [ "$?" -ne 0 ]; then
     echo ""
@@ -39,6 +39,9 @@ echo "$CONTAINER_ID $CONTAINER_NAME"> $ID_FILE
 echo "$CONTAINER_NAME sha1: "$CONTAINER_ID
 echo ""
 echo "To enter the container($CONTAINER_NAME):"
-echo "docker exec -it $CONTAINER_ID" bash
+echo ""
+echo "$ docker exec -it $CONTAINER_ID" bash
+echo "OR"
+echo "$ docker exec -it $CONTAINER_NAME" bash
 echo ""
 

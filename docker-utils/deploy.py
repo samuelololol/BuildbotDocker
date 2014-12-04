@@ -82,6 +82,15 @@ def create_img(dockerfile_path, img_name, client):
     return img_name
 
 def create_client(docker_sock_path):
+    """
+    create docker.Client instance
+
+    params:
+      docker_sock_path: docker domain socket mounted from host
+
+    return:
+      <docker.Client> instance
+    """
     domain_socket = 'unix:/%s' % docker_sock_path
     client = Client(base_url=domain_socket)
     return client
@@ -168,5 +177,4 @@ if __name__ == '__main__':
             usage('docker domain socket(%s)is not exists' % docker_sock_path)
 
     main(docker_sock_path)
-
 

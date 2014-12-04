@@ -39,8 +39,8 @@ Install and Setup
 
 Delete container or Remove image
 ----------------------
-* ./delete_bbd.sh
-* ./remove_image.sh
+* ./delete_bbd.sh: remove bbd container recorded in bbd.id file
+* ./remove_images.sh: remove all bbd images
 
 Resources
 ---------

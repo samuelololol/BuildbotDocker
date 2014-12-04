@@ -1,28 +1,48 @@
 #!/bin/bash
 SOURCE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}"  )" && pwd  )"
 
-if [ "$#" -ne 1 ]; then
+if [ "$#" -eq 2 ]; then
     echo ""
-    echo "./prepare_image.sh <buildbot folder path>"
+    echo "use `$1` as buildbot settings"
+    echo "add diff of dockerfiles:`$2` to Dockerfile"
+    echo ""
+
+    if [[ -d $2 ]]; then
+        cat $2 >> $SOURCE_DIR/Dockerfile
+    else
+        echo ""
+        echo "[ERROR] $2 is not a regular file"
+        exit 42
+    fi
+
+elif [ "$#" -eq 1 ]; then
+    echo ""
+    echo "Usage:    $ ./prepare_image.sh <buildbot folder path> [<dockerfile.diff>]"
     echo ""
     echo "use default buildbot setting:"
     echo "  $SOURCE_DIR/buildbot"
+    echo "use default Dockerfile"
 else
     echo ""
-    echo "use $1 as buildbot folder"
+    echo "Usage:    $ ./prepare_image.sh <buildbot folder path> [<dockerfile.diff>]"
+    echo ""
+    exit 42
+fi
 
-    BUILDBOT_FDR=$1
-    local_bbd_fdr_name=${1%/}
-    local_bbd_fdr_name=${local_bbd_fdr_name##*/}
-    if [[ -d $1 ]]; then
-        rm -rf $SOURCE_DIR/buildbot
-        cp -r $1 .
-        if [ "$local_bbd_fdr_name" != "buildbot" ]; then
-            mv $local_bbd_fdr_name buildbot
-        fi
-    else
-        exit 1
+
+BUILDBOT_FDR=$1
+local_bbd_fdr_name=${1%/}
+local_bbd_fdr_name=${local_bbd_fdr_name##*/}
+if [[ -d $1 ]]; then
+    rm -rf $SOURCE_DIR/buildbot
+    cp -r $1 .
+    if [ "$local_bbd_fdr_name" != "buildbot" ]; then
+        mv $local_bbd_fdr_name buildbot
     fi
+else
+    echo ""
+    echo "[ERROR] buildbot setting is not a folder"
+    exit 43
 fi
 
 DEFAULT_IMAGE_NAME="bbd_img"
@@ -42,4 +62,7 @@ echo ""
 echo "BuildBotDocker Image Name: "$IMAGE_NAME
 echo "BuildBotDocker Image ID: "$IMAGE_ID
 echo ""
+echo "create container: "
+echo "Usage:    $ ./create_bbd.sh $IMAGE_NAME [<buildbot portal port>]"
+echo "    OR    $ ./create_bbd.sh $IMAGE_ID [<buildbot portal port>]"
 

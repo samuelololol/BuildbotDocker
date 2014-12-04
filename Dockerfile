@@ -5,7 +5,7 @@ ADD buildbot/buildbot.tac.master /var/lib/buildmaster/buildbot.tac
 ADD buildbot/buildbot.tac.slave /var/lib/buildslave/buildbot.tac
 ADD buildbot/master.cfg /var/lib/buildmaster/master.cfg
 ADD docker-utils/deploy.py /var/lib/buildmaster/bin/deploy.py
-ADD docker-utils/Dockerfile.yaml /var/lib/buildmaster/bin/project_bin
+ADD docker-utils/Dockerfile.yaml /var/lib/buildmaster/bin/project_bin/Dockerfile.yaml
 RUN ["chown", "-h", "buildbot:buildbot", "/var/lib/buildmaster", "-R"]
 RUN ["chown", "-h", "buildbot:buildbot", "/var/lib/buildslave", "-R"]
 RUN ["emerge", "pip"]

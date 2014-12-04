@@ -31,7 +31,7 @@ Install and Setup
   1. [buildbot/master.cfg](https://github.com/samuelololol/BuildbotDocker/blob/master/buildbot/master.cfg): master settings(repository path/branch name)
   2. (Recommanded) [create_bbd.sh](https://github.com/samuelololol/BuildbotDocker/blob/master/create_bbd.sh): container settings(buildbot portal port)
   1. (Optional) [prepare_image.sh](https://github.com/samuelololol/BuildbotDocker/blob/master/prepare_image.sh): image settings(image name), or assign prepared-buildbot folder
-  4. (Optional) [Dockerfile](https://github.com/samuelololol/BuildbotDocker/blob/master/Dockerfile): Docker image setting
+  4. (Optional) dockerfile.diff: A diff file in order to append to [Dockerfile](https://github.com/samuelololol/BuildbotDocker/blob/master/Dockerfile)
   5. (Optional) Prepare ssh keys to [buildbot/bin](https://github.com/samuelololol/BuildbotDocker/tree/master/buildbot/bin) folder if using any privilege repository
 4. $ ./prepare_image.sh &lt;buildbot folder path&gt; [&lt;dockerfile.diff&gt;]
 5. $ ./create_bbd.sh &lt;bbd image name&gt; [&lt;buildbot portal port&gt;]
@@ -46,6 +46,7 @@ Resources
 ---------
 * [Buildbot](http://buildbot.net)
 * [Docker.com](https://www.docker.com/)
+  * [docker-py Documentation](http://docker-py.readthedocs.org/en/latest/)
   * [Docker cheat-sheep](https://github.com/wsargent/docker-cheat-sheet)
   * [Docker Remote API](http://docs.docker.com/reference/api/docker_remote_api_v1.9/), The daemon listens on unix:///var/run/docker.sock but you can bind Docker to another host/port or a Unix socket.
 * [Buildbot docker image in Gentoo](https://registry.hub.docker.com/u/samuelololol/gentoo-buildbot/)

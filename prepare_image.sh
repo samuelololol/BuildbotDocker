@@ -1,4 +1,8 @@
 #!/bin/bash
+#
+# date: 2014/12/05
+# author: samuel
+
 SOURCE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}"  )" && pwd  )"
 
 if [ "$#" -eq 2 ]; then

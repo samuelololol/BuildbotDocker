@@ -1,4 +1,8 @@
 #!/bin/bash
+#
+# date: 2014/12/05
+# author: samuel
+
 SOURCE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}"  )" && pwd  )"
 ID_FILE=$SOURCE_DIR"/bbd.id"
 
@@ -16,13 +20,13 @@ if [ "$#" -eq 2 ]; then
     HOST_BDD_PORT=$2
 elif [ "$#" -eq 1 ]; then
     echo ""
-    echo "Usage:    $ ./create_bbd.sh <bbd image name> [<buildbot portal port>]"
+    echo "Usage:    $ ./create_bbd.sh <bbd image name> [<buildbot portal port: default 8010>]"
     echo ""
     echo "use $1 as image name"
     echo "use default buildbot port 8010"
 else
     echo ""
-    echo "Usage:    $ ./create_bbd.sh <bbd image name> [<buildbot portal port>]"
+    echo "Usage:    $ ./create_bbd.sh <bbd image name> [<buildbot portal port: default 8010>]"
     echo ""
     exit 42
 fi

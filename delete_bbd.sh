@@ -1,4 +1,8 @@
 #!/bin/bash
+#
+# date: 2014/12/05
+# author: samuel
+
 SOURCE_DIR="${BASH_SOURCE[0]}"
 SOURCE_DIR=$(dirname $SOURCE_DIR)
 ID_FILE=$SOURCE_DIR"/bbd.id"

@@ -7,7 +7,7 @@ if [ "$#" -eq 2 ]; then
     echo "add diff of dockerfiles:$2 to Dockerfile"
     echo ""
 
-    if [[ -d $2 ]]; then
+    if [[ -f $2 ]]; then
         cat $2 >> $SOURCE_DIR/Dockerfile
     else
         echo ""

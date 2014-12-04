@@ -16,12 +16,25 @@ def id_generator(size=6, chars=string.ascii_lowercase + string.digits):
 
 Docker_Sock_Path = '/var/www/docker.sock'
 
-"""
-command:
-    create_img_on_host.py <Dockerfile> <image_name> [<docker.sock path>]
-
-"""
 def create_container(img_name, yaml_cfg, client):
+    """
+    create container
+
+    params:
+      img_name: <string>,      image name
+      yaml_cfg: <dict>,        yaml config
+      client: <docker.Client>, docker client instance
+
+    return:
+      rtn_msg: <dict>,         container information
+
+      ie:
+      {'container_id': 
+       'container_name':
+       'container_ip':
+       }
+
+    """
     rtn_msg = {}
     section_name = yaml_cfg.keys()[0]
     #optional
@@ -51,6 +64,17 @@ def create_container(img_name, yaml_cfg, client):
     return rtn_msg
 
 def create_img(dockerfile_path, img_name, client):
+    """
+    create image
+
+    params:
+      dockerfile_path: <string>,   dockerfile_path
+      img_name: <string>,          image name
+      client: <docker.Client>,     docker client instance
+
+    return:
+      img_name: <string>,          image name
+    """
     if _check_duplicated_image_name(img_name, client):
         img_name = img_name.replace(':latest', '') + '_%s' % id_generator()
     with open(dockerfile_path) as f:
@@ -70,6 +94,11 @@ def usage(reason):
     sys.exit()
 
 def main(docker_sock_path=Docker_Sock_Path):
+    """
+    command:
+        create_img_on_host.py <Dockerfile> <image_name> [<docker.sock path>]
+
+    """
     dockerfile_path = sys.argv[1]
     img_name =        sys.argv[2]
     client =          create_client(docker_sock_path)

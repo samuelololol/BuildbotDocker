@@ -10,15 +10,15 @@ IMAGE_ID=`docker images | grep $IMAGE_NAME | awk '{print $3}'`
 
 if [ "$#" -eq 2 ]; then
     echo ""
-    echo "use `$1` as image name"
-    echo "use `$2` as buildbot port"
+    echo "use $1 as image name"
+    echo "use $2 as buildbot port"
     IMAGE_NAME=$1
     HOST_BDD_PORT=$2
 elif [ "$#" -eq 1 ]; then
     echo ""
     echo "Usage:    $ ./create_bbd.sh <bbd image name> [<buildbot portal port>]"
     echo ""
-    echo "use `$1` as image name"
+    echo "use $1 as image name"
     echo "use default buildbot port 8010"
 else
     echo ""

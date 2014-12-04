@@ -3,8 +3,8 @@ SOURCE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}"  )" && pwd  )"
 
 if [ "$#" -eq 2 ]; then
     echo ""
-    echo "use `$1` as buildbot settings"
-    echo "add diff of dockerfiles:`$2` to Dockerfile"
+    echo "use $1 as buildbot settings"
+    echo "add diff of dockerfiles:$2 to Dockerfile"
     echo ""
 
     if [[ -d $2 ]]; then

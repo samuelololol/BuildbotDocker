@@ -8,5 +8,7 @@ ADD docker-utils/deploy.py /var/lib/buildmaster/bin/deploy.py
 ADD docker-utils/Dockerfile.yaml /var/lib/buildmaster/bin/project_bin/Dockerfile.yaml
 RUN ["chown", "-h", "buildbot:buildbot", "/var/lib/buildmaster", "-R"]
 RUN ["chown", "-h", "buildbot:buildbot", "/var/lib/buildslave", "-R"]
-RUN ["emerge", "pip"]
-RUN ["pip", "install", "docker-py", "pyyaml"]
+RUN ["eselect", "python", "set", "python2.7"]
+RUN ["emerge", "dev-python/pip"]
+RUN ["pip", "install", "docker-py", "pyyaml", "virtualenv"]
+

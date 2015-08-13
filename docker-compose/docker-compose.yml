@@ -1,0 +1,11 @@
+buildbotmaster:
+    image: samuelololol/ubuntu-buildbot-master
+    ports:
+        - "8010:8010"
+        - "9989:9989"
+
+buildbotslave:
+    image: samuelololol/ubuntu-buildbot-slave
+    links:
+        - buildbotmaster
+    

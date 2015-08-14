@@ -1,5 +1,5 @@
 buildbotmaster:
-    build: /home/samuel/Developments/mydockerfiles/ubuntu-buildbot-master
+    build: ubuntu-buildbot-master
     ports:
         - "8010:8010"
         - "9989:9989"
@@ -7,7 +7,7 @@ buildbotmaster:
         - BUILDBOT_REPO_PATH=https://github.com/samuelololol/buildbotdocker.git
 
 buildbotslave:
-    build: /home/samuel/Developments/mydockerfiles/ubuntu-buildbot-slave
+    build: ubuntu-buildbot-slave
     links:
         - buildbotmaster:buildbotmaster
     

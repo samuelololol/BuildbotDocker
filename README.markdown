@@ -54,7 +54,7 @@ Launch Buildbot CI
 
 > Copy files into your git repository
 
-    $ unzip master.zip -d /tmp
+    $ unzip /tmp/master.zip -d /tmp
     $ cp -r /tmp/BuildbotDocker-master/docker-buildbot/ <YOUR REPO PATH>
 
 > Start Buildbot CI container

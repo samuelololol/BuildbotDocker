@@ -1,7 +1,9 @@
 BuildbotDocker
 ==============
 
-An buildbot CI environment for developing.
+An buildbot CI environment, its goal is helping developer working with a tiny
+but powerful CI system. With every commits pushed, buildbot is triggered new
+build and records the test result on master portal.
 
 ># Basic CI deployment:
 >Prepared docker-composed.yml script will deploy a very simple CI environment.
@@ -26,8 +28,16 @@ Requirement
 * ssh-keys(optional if you're using private repository)
 * Platform: Linux (only tested on Linux)
 
+How it works[TDB]
+------------
+
+* Dockfiles
+* Docker images
+* Docker-compose scritps
+* Buildbot config
+
 Launch Buildbot CI
----
+-----------------
 
 > Download 
 

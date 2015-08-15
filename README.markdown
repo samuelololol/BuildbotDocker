@@ -8,7 +8,7 @@ Requirement
 -----------
 * Docker
 * Docker-compose
-* ssh-keys
+* ssh-keys(optional if you're using private repository)
 
 Run
 ---

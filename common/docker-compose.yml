@@ -4,18 +4,18 @@ buildbotmaster:
         - "8010:8010"
     environment:
         - BUILDBOT_REPO_PATH=https://github.com/samuelololol/buildbotdocker.git
-    volumes_from:
-        - sshvolume
+    volumes:
+        - ~/.ssh:/root/.ssh:ro
 
 buildbotslave:
     build: ./ubuntu-buildbot-slave
     links:
         - buildbotmaster
-    volumes_from:
-        - sshvolume
-
-sshvolume:
-    image: samuelololol/ubuntu-buildbot-base
     volumes:
         - ~/.ssh:/root/.ssh:ro
 
+#sshvolume:
+#    image: samuelololol/ubuntu-buildbot-base
+#    volumes:
+#        - ~/.ssh:/root/.ssh:ro
+#

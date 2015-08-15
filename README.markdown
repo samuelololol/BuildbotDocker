@@ -9,9 +9,14 @@ An buildbot CI environment for developing.
 ![basic deployment][1]
 
 ># With dockerized test plan:
->Users are able to add their custom dockerized test plan
+>Users are able to add their custom dockerized test plan.
 
 ![CI_with test deployment][2]
+
+># Triggered by commit pushed:
+> Recreate containers for test every build.
+
+![triggered deployment][3]
 
 Requirement
 -----------
@@ -41,3 +46,4 @@ Launch Buildbot CI
 
 [1]: https://raw.githubusercontent.com/samuelololol/BuildbotDocker/master/.diagram/buildbot.png
 [2]: https://raw.githubusercontent.com/samuelololol/BuildbotDocker/master/.diagram/buildbot_test.png
+[3]: https://raw.githubusercontent.com/samuelololol/BuildbotDocker/master/.diagram/buildbot_trigger.png

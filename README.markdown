@@ -28,24 +28,32 @@ Requirement
 * ssh-keys(optional if you're using private repository)
 * Platform: Linux (only tested on Linux)
 
-How it works[TDB]
+How it works
 ------------
 
-* Dockfiles
-* Docker images
-* Docker-compose scritps
-* Buildbot config
+The prepared docker-compose.yml uses pre-built docker image and mounts host docker.sock to enable creating container from container.
+
+
+* Dockfiles:
+  [master](https://raw.githubusercontent.com/samuelololol/BuildbotDocker/master/docker-buildbot/ubuntu-buildbot-master/Dockerfile),
+  [slave](https://raw.githubusercontent.com/samuelololol/BuildbotDocker/master/docker-buildbot/ubuntu-buildbot-slave/Dockerfile)
+* Docker images:
+  [samuelololol/ubuntu-buildbot-base](https://hub.docker.com/r/samuelololol/ubuntu-buildbot-base/)
+* Docker-compose scritps:
+  [docker-compose.yml](https://raw.githubusercontent.com/samuelololol/BuildbotDocker/master/docker-buildbot/docker-compose.yml)
+* Buildbot config:
+  [master.cfg](https://raw.githubusercontent.com/samuelololol/BuildbotDocker/master/docker-buildbot/ubuntu-buildbot-master/master.cfg)
 
 Launch Buildbot CI
 -----------------
 
 > Download 
 
-    $ wget https://github.com/samuelololol/BuildbotDocker/archive/master.zip
-    $ unzip master.zip -d /tmp
+    $ wget -O /tmp/master.zip https://github.com/samuelololol/BuildbotDocker/archive/master.zip
 
 > Copy files into your git repository
 
+    $ unzip master.zip -d /tmp
     $ cp -r /tmp/BuildbotDocker-master/docker-buildbot/ <YOUR REPO PATH>
 
 > Start Buildbot CI container

@@ -49,7 +49,8 @@ Launch Buildbot CI
 
 > Download 
 
-    $ wget -O /tmp/master.zip https://github.com/samuelololol/BuildbotDocker/archive/master.zip
+    $ wget -O /tmp/master.zip \
+          https://github.com/samuelololol/BuildbotDocker/archive/master.zip
 
 > Copy files into your git repository
 

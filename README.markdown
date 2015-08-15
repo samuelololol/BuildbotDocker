@@ -24,7 +24,7 @@ Requirement
 * Docker
 * Docker-compose
 * ssh-keys(optional if you're using private repository)
-* only tested on Linux
+* Platform: Linux (only tested on Linux)
 
 Launch Buildbot CI
 ---

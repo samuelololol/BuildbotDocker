@@ -11,5 +11,6 @@ import os
 
 def test_buildbot_availible():
     response = requests.get('http://buildbotmaster:8010/json/builders/?as_text=1')
+    print 'ready to test http://buildbotmaster:8010/json/builders/?as_text=1'
     assert response.status_code == 200
 

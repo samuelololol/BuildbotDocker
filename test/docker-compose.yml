@@ -1,5 +1,4 @@
 buildbotmaster:
-    container_name: testme_iam_buildbot_master
     build: ./ubuntu-buildbot-master
     ports:
         - "7010:8010"
@@ -9,7 +8,6 @@ buildbotmaster:
         - PROJECT_URL=https://github.com/samuelololol/BuildbotDocker.git
 
 buildbotslave:
-    container_name: testme_iam_buildbot_slave
     build: ./ubuntu-buildbot-master
     build: ./ubuntu-buildbot-slave
     links:
@@ -23,5 +21,5 @@ tester:
     volumes_from:
         - pytest
     links:
-        - testme_iam_buildbot_slave:buildbotslave
-        - testme_iam_buildbot_master:buildbotmaster
+        - buildbotslave
+        - buildbotmaster

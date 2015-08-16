@@ -58,6 +58,3 @@ id_rsa*
 
 # backup files
 *.bak
-
-# container_id file
-bbd.id

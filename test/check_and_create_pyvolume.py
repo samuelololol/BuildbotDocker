@@ -7,6 +7,7 @@ import docker
 from docker import Client
 import sys
 import os
+import json
 
 CONTAINER_NAME='pytest'
 IMAGE_NAME='pytest_volume'
@@ -40,8 +41,8 @@ def create_container(docker, name):
 def build_image(docker, name):
     print 'build_image'
     cwd = '/'.join(os.path.abspath(__file__).split('/')[:-1])
-    for line in docker.build(path=cwd+'/pytest_volume', tag=name, rm=True)]:
-        print line
+    for line in docker.build(path=cwd+'/pytest_volume', tag=name, rm=True):
+        print json.loads(line).values()[0],
 
 
 def main():

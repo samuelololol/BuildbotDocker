@@ -16,7 +16,6 @@ buildbotslave:
         - /var/run/docker.sock:/var/run/docker.sock
 
 tester:
-    #image: python:2-onbuild
     build: ./tests
     working_dir: /usr/src/app
     volumes_from:

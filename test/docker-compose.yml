@@ -17,7 +17,8 @@ buildbotslave:
 
 tester:
     image: python:2-onbuild
-    command: ls -l && py.test
+    working_dir: /usr/src/app
+    command: py.test
     volumes_from:
         - pytest
     links:

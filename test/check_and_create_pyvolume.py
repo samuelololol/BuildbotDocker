@@ -40,7 +40,7 @@ def create_container(docker, name):
 def build_image(docker, name):
     print 'build_image'
     cwd = '/'.join(os.path.abspath(__file__).split('/')[:-1])
-    for line in docker.build(path=cwd+'/pytest_volume', tag=name, rm=True)]
+    for line in docker.build(path=cwd+'/pytest_volume', tag=name, rm=True)]:
         print line
 
 

@@ -1,0 +1,2 @@
+#!/bin/bash
+docker rmi $(docker images | grep 'buildbot\|dockertest\|pytest_volume' | grep -v 'ubuntu-buildbot-base' | awk '{print $3}')

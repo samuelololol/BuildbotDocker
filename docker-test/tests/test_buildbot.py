@@ -3,8 +3,10 @@
 __date__= 'Aug 16, 2015 '
 __author__= 'samuel'
 
-import pytest
 import requests
+
+
+import pytest
 from requests.adapters import HTTPAdapter
 from BeautifulSoup import BeautifulSoup as bs
 import os
@@ -12,7 +14,7 @@ import os
 
 def test_buildbot_availible():
     url = 'http://buildbotmaster:8010/json/builders/?as_text=1'
-    response = s.get(url)
+    response = requests.get(url)
     print 'ready to test http://buildbotmaster:8010/json/builders/?as_text=1'
     assert response.status_code == 200
 

@@ -8,7 +8,6 @@ buildbotmaster:
         - PROJECT_URL=https://github.com/samuelololol/BuildbotDocker.git
 
 buildbotslave:
-    build: ./ubuntu-buildbot-master
     build: ./ubuntu-buildbot-slave
     links:
         - buildbotmaster

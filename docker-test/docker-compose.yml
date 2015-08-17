@@ -1,7 +1,7 @@
 buildbotmaster:
     build: ./ubuntu-buildbot-master
-    ports:
-        - "7010:8010"
+    #ports:
+    #    - "7010:8010"
     environment:
         - GIT_REPO_URL=https://github.com/samuelololol/buildbotdocker.git
         - PROJECT_TITLE=Test_BuildbotDocker

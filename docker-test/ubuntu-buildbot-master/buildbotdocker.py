@@ -9,9 +9,10 @@ from buildbot.status import html
 from buildbot.status.web import authz, auth
 
 
-GIT_REPO_URL  = os.environ['GIT_REPO_URL']
-PROJECT_TITLE = os.environ['PROJECT_TITLE']
-PROJECT_URL   = os.environ['PROJECT_URL']
+GIT_REPO_URL        = os.environ['GIT_REPO_URL']
+PROJECT_TITLE       = os.environ['PROJECT_TITLE']
+PROJECT_URL         = os.environ['PROJECT_URL']
+PROJECT_TEST_FOLDER = os.environ['PROJECT_TEST_FOLDER']
 
 BUILDBOT_SLAVE_NAME = "example-slave"
 BUILDBOT_SLAVE_PASS = "pass"
@@ -58,20 +59,20 @@ BUILDBOT_FACTORY.addStep(steps.ShellCommand(
     name="check python volume",
     description="checking",
     descriptionDone="checked",
-    command=["python", BUILDSLAVE_BUILD_PATH+"/docker-test/check_and_create_pyvolume.py"]))
+    command=["python", BUILDSLAVE_BUILD_PATH+"/"+PROJECT_TEST_FOLDER+"/check_and_create_pyvolume.py"]))
 
 BUILDBOT_FACTORY.addStep(steps.ShellCommand(
     name="build images",
     description="building images",
     descriptionDone="built",
-    workdir=BUILDSLAVE_BUILD_PATH+'/docker-test',
+    workdir=BUILDSLAVE_BUILD_PATH+'/'+PROJECT_TEST_FOLDER,
     command=["docker-compose", "build", "--no-cache"]))
 
 BUILDBOT_FACTORY.addStep(steps.ShellCommand(
     name="test",
     description="testing",
     descriptionDone="tested",
-    workdir=BUILDSLAVE_BUILD_PATH+'/docker-test',
+    workdir=BUILDSLAVE_BUILD_PATH+'/'+PROJECT_TEST_FOLDER,
     command=["docker-compose", "run", "--rm",
              "tester", "./test_runner.sh"]))
 
@@ -79,14 +80,14 @@ BUILDBOT_FACTORY.addStep(steps.ShellCommand(
     name="stop containers",
     description="stopping containers",
     descriptionDone="stopped",
-    workdir=BUILDSLAVE_BUILD_PATH+'/docker-test',
+    workdir=BUILDSLAVE_BUILD_PATH+'/'+PROJECT_TEST_FOLDER,
     command=["docker-compose", "stop"]))
 
 BUILDBOT_FACTORY.addStep(steps.ShellCommand(
     name="remove containers",
     description="removing containers",
     descriptionDone="removed",
-    workdir=BUILDSLAVE_BUILD_PATH+'/docker-test',
+    workdir=BUILDSLAVE_BUILD_PATH+'/'+PROJECT_TEST_FOLDER,
     command=["docker-compose", "rm", "-f"]))
 
 # ------

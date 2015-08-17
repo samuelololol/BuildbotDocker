@@ -16,7 +16,7 @@ buildbotslave:
 
 tester:
     build: ./tests
-    working_dir: /usr/src/app
+    #working_dir: /usr/src/app
     volumes_from:
         - pytest
     links:

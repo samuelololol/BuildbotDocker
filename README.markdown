@@ -47,6 +47,9 @@ The prepared docker-compose.yml uses pre-built docker image and mounts host dock
 Launch Buildbot CI
 -----------------
 
+![under construction.][4]
+
+<!---
 > Download 
 
     $ wget -O /tmp/master.zip \
@@ -61,8 +64,11 @@ Launch Buildbot CI
 
     $ cd <YOUR REPO PATH>
     $ docker-compose build && docker-compose up -d
+-->
 
 
 [1]: https://raw.githubusercontent.com/samuelololol/BuildbotDocker/master/.diagram/buildbot.png
 [2]: https://raw.githubusercontent.com/samuelololol/BuildbotDocker/master/.diagram/buildbot_test.png
 [3]: https://raw.githubusercontent.com/samuelololol/BuildbotDocker/master/.diagram/buildbot_trigger.png
+
+[4]: http://images.all-free-download.com/images/graphiclarge/free_urban_background_48269.jpg

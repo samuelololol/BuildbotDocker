@@ -44,8 +44,8 @@ The prepared docker-compose.yml uses pre-built docker image and mounts host dock
 * Buildbot config:
   [master.cfg](https://raw.githubusercontent.com/samuelololol/BuildbotDocker/master/docker-buildbot/ubuntu-buildbot-master/master.cfg)
 
-Launch Buildbot CI
------------------
+How to launch
+-------------
 
 ![under construction.][4]
 

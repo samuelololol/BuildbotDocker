@@ -4,7 +4,7 @@ buildbotmaster:
         - "8010:8010"
     environment:
         - GIT_REPO_URL=https://github.com/samuelololol/buildbotdocker.git
-        - BUILDBOT_GITPOLLER_BRANCH=master 
+        - GIT_REPO_BRANCH=master
         - PROJECT_TITLE=BuildbotDocker
         - PROJECT_URL=https://github.com/samuelololol/BuildbotDocker.git
         - PROJECT_TEST_FOLDER=test

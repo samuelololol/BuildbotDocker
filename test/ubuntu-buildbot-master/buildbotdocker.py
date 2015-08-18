@@ -9,22 +9,22 @@ from buildbot.status import html
 from buildbot.status.web import authz, auth
 
 
-GIT_REPO_URL              = os.environ['GIT_REPO_URL']
-BUILDBOT_GITPOLLER_BRANCH = os.environ['BUILDBOT_GITPOLLER_BRANCH']
-PROJECT_TITLE             = os.environ['PROJECT_TITLE']
-PROJECT_URL               = os.environ['PROJECT_URL']
-PROJECT_TEST_FOLDER       = os.environ['PROJECT_TEST_FOLDER']
+GIT_REPO_URL        = os.environ['GIT_REPO_URL']
+GIT_REPO_BRANCH     = os.environ['GIT_REPO_BRANCH']
+PROJECT_TITLE       = os.environ['PROJECT_TITLE']
+PROJECT_URL         = os.environ['PROJECT_URL']
+PROJECT_TEST_FOLDER = os.environ['PROJECT_TEST_FOLDER']
 
 BUILDBOT_SLAVE_NAME = "example-slave"
 BUILDBOT_SLAVE_PASS = "pass"
-BUILDBOT_FORCE_BUILD_SCHEDULER_NAME="force"
-BUILDBOT_SINGLE_BRANCH_SCHEDULER_NAME="simplify_master_cfg"
-BUILDBOT_BUILDER_NAME="bugfree_builder"
+BUILDBOT_SINGLE_BRANCH_SCHEDULER_NAME = GIT_REPO_BRANCH#"master"
+BUILDBOT_FORCE_BUILD_SCHEDULER_NAME   = "force"
+BUILDBOT_BUILDER_NAME = "bugfree_builder"
 BUILDSLAVE_BUILD_PATH='/app/%s/build' % BUILDBOT_BUILDER_NAME
 
 BUILDBOT_MASTER_PROTOCOL_PORT = 9989
 
-#BUILDBOT_GITPOLLER_BRANCH = "master" #from os.environ
+BUILDBOT_GITPOLLER_BRANCH = GIT_REPO_BRANCH #"master" #from os.environ
 BUILDBOT_GITPOLLER_BRANCHES = None
 BUILDBOT_GIT_POLLINTERVAL = 300
 
@@ -52,25 +52,25 @@ BUILDBOT_SCHEDULERS = [
         ]
 
 
-# ---------------
-# factory / steps
-# ---------------
-BUILDBOT_FACTORY=util.BuildFactory()
-BUILDBOT_FACTORY.addStep( steps.Git(repourl=GIT_REPO_URL, mode='incremental'))
-BUILDBOT_FACTORY.addStep(steps.ShellCommand(
+# -------------
+# factory/steps
+# -------------
+BUILDBOT_FACTORY_FOR_TEST=util.BuildFactory()
+BUILDBOT_FACTORY_FOR_TEST.addStep( steps.Git(repourl=GIT_REPO_URL, mode='incremental'))
+BUILDBOT_FACTORY_FOR_TEST.addStep(steps.ShellCommand(
     name="check python volume",
     description="checking",
     descriptionDone="checked",
     command=["python", BUILDSLAVE_BUILD_PATH+"/"+PROJECT_TEST_FOLDER+"/check_and_create_pyvolume.py"]))
 
-BUILDBOT_FACTORY.addStep(steps.ShellCommand(
+BUILDBOT_FACTORY_FOR_TEST.addStep(steps.ShellCommand(
     name="build images",
     description="building images",
     descriptionDone="built",
     workdir=BUILDSLAVE_BUILD_PATH+'/'+PROJECT_TEST_FOLDER,
     command=["docker-compose", "build", "--no-cache"]))
 
-BUILDBOT_FACTORY.addStep(steps.ShellCommand(
+BUILDBOT_FACTORY_FOR_TEST.addStep(steps.ShellCommand(
     name="test",
     description="testing",
     descriptionDone="tested",
@@ -78,14 +78,14 @@ BUILDBOT_FACTORY.addStep(steps.ShellCommand(
     command=["docker-compose", "run", "--rm",
              "tester", "./test_runner.sh"]))
 
-BUILDBOT_FACTORY.addStep(steps.ShellCommand(
+BUILDBOT_FACTORY_FOR_TEST.addStep(steps.ShellCommand(
     name="stop containers",
     description="stopping containers",
     descriptionDone="stopped",
     workdir=BUILDSLAVE_BUILD_PATH+'/'+PROJECT_TEST_FOLDER,
     command=["docker-compose", "stop"]))
 
-BUILDBOT_FACTORY.addStep(steps.ShellCommand(
+BUILDBOT_FACTORY_FOR_TEST.addStep(steps.ShellCommand(
     name="remove containers",
     description="removing containers",
     descriptionDone="removed",

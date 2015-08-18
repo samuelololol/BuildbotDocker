@@ -9,10 +9,11 @@ from buildbot.status import html
 from buildbot.status.web import authz, auth
 
 
-GIT_REPO_URL        = os.environ['GIT_REPO_URL']
-PROJECT_TITLE       = os.environ['PROJECT_TITLE']
-PROJECT_URL         = os.environ['PROJECT_URL']
-PROJECT_TEST_FOLDER = os.environ['PROJECT_TEST_FOLDER']
+GIT_REPO_URL              = os.environ['GIT_REPO_URL']
+BUILDBOT_GITPOLLER_BRANCH = os.environ['BUILDBOT_GITPOLLER_BRANCH']
+PROJECT_TITLE             = os.environ['PROJECT_TITLE']
+PROJECT_URL               = os.environ['PROJECT_URL']
+PROJECT_TEST_FOLDER       = os.environ['PROJECT_TEST_FOLDER']
 
 BUILDBOT_SLAVE_NAME = "example-slave"
 BUILDBOT_SLAVE_PASS = "pass"
@@ -23,8 +24,7 @@ BUILDSLAVE_BUILD_PATH='/app/%s/build' % BUILDBOT_BUILDER_NAME
 
 BUILDBOT_MASTER_PROTOCOL_PORT = 9989
 
-#BUILDBOT_GITPOLLER_BRANCH = "simplify_master_cfg"
-BUILDBOT_GITPOLLER_BRANCH = "master"
+#BUILDBOT_GITPOLLER_BRANCH = "master" #from os.environ
 BUILDBOT_GITPOLLER_BRANCHES = None
 
 BUILDBOT_MASTER_PORT = 8010

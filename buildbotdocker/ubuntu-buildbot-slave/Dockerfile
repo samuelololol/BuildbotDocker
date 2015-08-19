@@ -1,6 +1,5 @@
 FROM samuelololol/ubuntu-buildbot-base
 MAINTAINER samuelololol <samuelololol@gmail.com>
-COPY buildbotdocker.py /app/buildbotdocker.py
 COPY git_ssh /usr/local/bin/git_ssh
 ENV GIT_SSH=/usr/local/bin/git_ssh \
     TZ=Asia/Taipei

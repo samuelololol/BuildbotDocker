@@ -1,12 +1,12 @@
 buildbotmaster:
     extends:
         file: ./common/docker-compose.yml
-        service: buildbotmaster
+        service: commonmaster
 
 buildbotslave:
     extends:
         file: ./common/docker-compose.yml
-        service: buildbotslave
+        service: commonslave
     links:
         - buildbotmaster
 

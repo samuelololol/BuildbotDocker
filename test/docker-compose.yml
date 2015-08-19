@@ -1,18 +1,16 @@
 BuildbotDockerMasterfortest:
     extends:
         file: ../common/docker-compose.yml
-        service: buildbotmaster
+        service: commonmaster
     environment:
         - PROJECT_TITLE=BuildbotDockerForTest
 
 BuildbotDockerSlavefortest:
     extends:
         file: ../common/docker-compose.yml
-        service: buildbotslave
+        service: commonslave
     links:
         - BuildbotDockerMasterfortest
-    volumes:
-        - /var/run/docker.sock:/var/run/docker.sock
 
 BuildbotDockerTester:
     build: ./buildbotdockertests

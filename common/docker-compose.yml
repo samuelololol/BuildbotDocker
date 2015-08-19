@@ -1,4 +1,4 @@
-buildbotmaster:
+commonmaster:
     build: .
     ports:
         - "8011:8010"
@@ -11,7 +11,7 @@ buildbotmaster:
     volumes:
         - ~/.ssh:/root/.ssh:ro
 
-buildbotslave:
+commonslave:
     image: samuelololol/ubuntu-buildbot-slave
     volumes:
         - ~/.ssh:/root/.ssh:ro

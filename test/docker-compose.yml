@@ -1,13 +1,13 @@
 BuildbotDockerMasterfortest:
     extends:
-        file: ../docker-compose.yml
+        file: ../common/docker-compose.yml
         service: buildbotmaster
     environment:
         - PROJECT_TITLE=BuildbotDockerForTest
 
 BuildbotDockerSlavefortest:
     extends:
-        file: ../docker-compose.yml
+        file: ../common/docker-compose.yml
         service: buildbotslave
     links:
         - BuildbotDockerMasterfortest

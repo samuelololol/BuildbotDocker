@@ -1,0 +1,19 @@
+buildbotmaster:
+    build: .
+    ports:
+        - "8011:8010"
+    environment:
+        - GIT_REPO_URL=https://github.com/samuelololol/buildbotdocker.git
+        - GIT_REPO_BRANCH=master
+        - PROJECT_TITLE=BuildbotDocker
+        - PROJECT_URL=https://github.com/samuelololol/BuildbotDocker.git
+        - PROJECT_TEST_FOLDER=test
+    volumes:
+        - ~/.ssh:/root/.ssh:ro
+
+buildbotslave:
+    image: samuelololol/ubuntu-buildbot-slave
+    volumes:
+        - ~/.ssh:/root/.ssh:ro
+        - /var/run/docker.sock:/var/run/docker.sock
+

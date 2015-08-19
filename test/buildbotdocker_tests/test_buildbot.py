@@ -13,8 +13,8 @@ import os
 
 
 def test_buildbot_availible():
-    url = 'http://buildbotmaster:8010/json/builders/?as_text=1'
+    url = 'http://target:8010/json/builders/?as_text=1'
     response = requests.get(url)
-    print 'ready to test http://buildbotmaster:8010/json/builders/?as_text=1'
+    print 'ready to test http://target:8010/json/builders/?as_text=1'
     assert response.status_code == 200
 

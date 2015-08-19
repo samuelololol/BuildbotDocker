@@ -76,7 +76,7 @@ BUILDBOT_FACTORY_FOR_TEST.addStep(steps.ShellCommand(
     descriptionDone="tested",
     workdir=BUILDSLAVE_BUILD_PATH+'/'+PROJECT_TEST_FOLDER,
     command=["docker-compose", "run", "--rm",
-             "tester", "./test_runner.sh"]))
+             "BuildbotDockerTester", "./test_runner.sh"]))
 
 BUILDBOT_FACTORY_FOR_TEST.addStep(steps.ShellCommand(
     name="stop containers",

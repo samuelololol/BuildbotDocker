@@ -9,8 +9,9 @@ import sys
 import os
 import json
 
-CONTAINER_NAME='pytest'
-IMAGE_NAME='pytest_volume'
+CONTAINER_NAME='buildbotdockertest'
+IMAGE_NAME='buildbotdockertest_volume'
+VOLUME_SETTING_FOLDER=IMAGE_NAME
 
 def check_container_name(docker, cname):
     print 'check_container_name,',
@@ -41,7 +42,7 @@ def create_container(docker, name):
 def build_image(docker, name):
     print 'build_image'
     cwd = '/'.join(os.path.abspath(__file__).split('/')[:-1])
-    for line in docker.build(path=cwd+'/pytest_volume', tag=name,
+    for line in docker.build(path=cwd+'/'+VOLUME_SETTING_FOLDER, tag=name,
                              rm=True, forcerm=True, nocache=True):
         print json.loads(line).values()[0],
 

@@ -1,25 +1,44 @@
-buildbotmaster:
-    build: ./ubuntu-buildbot-master
-    #ports:
-    #    - "7010:8010"
+BuildbotDockerMasterfortest:
+    extends:
+        file: ../docker-compose.yml
+        service: buildbotmaster
     environment:
-        - GIT_REPO_URL=https://github.com/samuelololol/buildbotdocker.git
-        - GIT_REPO_BRANCH=master
-        - PROJECT_TITLE=BuildbotDocker
-        - PROJECT_URL=https://github.com/samuelololol/BuildbotDocker.git
-        - PROJECT_TEST_FOLDER=test
+        - PROJECT_TITLE=BuildbotDockerForTest
 
-buildbotslave:
-    build: ./ubuntu-buildbot-slave
+BuildbotDockerSlavefortest:
+    extends:
+        file: ../docker-compose.yml
+        service: buildbotslave
     links:
-        - buildbotmaster
+        - BuildbotDockerMasterfortest
     volumes:
         - /var/run/docker.sock:/var/run/docker.sock
 
-tester:
+BuildbotDockerTester:
     build: ./tests
     volumes_from:
-        - pytest
+        - buildbotdockertest
     links:
-        - buildbotslave
-        - buildbotmaster
+        - BuildbotDockerMasterfortest:target
+        - BuildbotDockerSlavefortest
+
+
+# Templates
+# =========
+# <ServiceCamelName>fortest:
+#   extends:
+#       file: <deploy docker-compose.yml>
+#       service: <service>
+#   <external settings>
+#   ...
+#   ...
+#   
+#   
+# <ServiceCamelName>Tester:
+#   build: ./<ServiceCamelName>_tests
+#   volumes_from:
+#     - <ServiceCamelName>test #prepared volume container, built from check*.py
+#   links:
+#     - <ServiceCamelName>fortest
+#     - ...
+

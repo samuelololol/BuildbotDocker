@@ -1,14 +1,12 @@
-FROM samuelololol/gentoo-buildbot:0.8
-MAINTAINER samuelololol
-ADD buildbot/bin /var/lib/buildmaster/bin
-ADD buildbot/buildbot.tac.master /var/lib/buildmaster/buildbot.tac
-ADD buildbot/buildbot.tac.slave /var/lib/buildslave/buildbot.tac
-ADD buildbot/master.cfg /var/lib/buildmaster/master.cfg
-ADD docker-utils/deploy.py /var/lib/buildmaster/bin/deploy.py
-ADD docker-utils/Dockerfile.yaml /var/lib/buildmaster/bin/project_bin/Dockerfile.yaml
-RUN ["chown", "-h", "buildbot:buildbot", "/var/lib/buildmaster", "-R"]
-RUN ["chown", "-h", "buildbot:buildbot", "/var/lib/buildslave", "-R"]
-RUN ["eselect", "python", "set", "python2.7"]
-RUN ["emerge", "dev-python/pip"]
-RUN ["pip", "install", "docker-py", "pyyaml", "virtualenv"]
+FROM samuelololol/ubuntu-buildbot-master
+MAINTAINER samuelololol <samuelololol@gmail.com>
+COPY buildbotdocker.py /app/buildbotdocker.py
+ENV GIT_REPO_URL=https://github.com/samuelololol/buildbotdocker.git \
+    GIT_REPO_BRANCH=master \
+    PROJECT_TITLE=BuildbotDocker \
+    PROJECT_URL=https://github.com/samuelololol/BuildbotDocker.git \
+    PROJECT_TEST_FOLDER=test \
+    TZ=Asia/Taipei \
+    GIT_SSH=/usr/local/bin/git_ssh
+CMD ["buildbot", "start", "--nodaemon", "/app"]
 

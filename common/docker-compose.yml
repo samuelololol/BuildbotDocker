@@ -1,7 +1,5 @@
 commonmaster:
     build: .
-    ports:
-        - "8011:8010"
     environment:
         - GIT_REPO_URL=https://github.com/samuelololol/buildbotdocker.git
         - GIT_REPO_BRANCH=master

@@ -10,7 +10,7 @@ buildbotslave999test:
         file: ../common/docker-compose.yml
         service: commonslave
     links:
-        - BuildbotDockerMasterfortest
+        - buildbotmaster999test:buildbotmaster
 
 buildbottester999:
     build: ./buildbotdockertests

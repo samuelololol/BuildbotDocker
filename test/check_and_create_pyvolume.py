@@ -9,8 +9,8 @@ import sys
 import os
 import json
 
-CONTAINER_NAME='buildbotdockertest'
-IMAGE_NAME='buildbotdockertest_volume'
+CONTAINER_NAME='buildbotdockertestcontainer'
+IMAGE_NAME='buildbotdockertest_image_volume'
 VOLUME_SETTING_FOLDER=IMAGE_NAME
 
 def check_container_name(docker, cname):

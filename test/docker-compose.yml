@@ -17,7 +17,7 @@ BuildbotDockerSlavefortest:
 BuildbotDockerTester:
     build: ./buildbotdockertests
     volumes_from:
-        - buildbotdockertest
+        - buildbotdockertestcontainer
     links:
         - BuildbotDockerMasterfortest:target
         - BuildbotDockerSlavefortest

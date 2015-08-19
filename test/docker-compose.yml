@@ -1,24 +1,24 @@
-for-test_buildbotdocker.master:
+buildbotmaster999test:
     extends:
         file: ../common/docker-compose.yml
         service: commonmaster
     environment:
         - PROJECT_TITLE=BuildbotDockerForTest
 
-for-test_buildbotdocker.slave:
+buildbotslave999test:
     extends:
         file: ../common/docker-compose.yml
         service: commonslave
     links:
         - BuildbotDockerMasterfortest
 
-for-test_buildbotdocker-tester:
+buildbottester999:
     build: ./buildbotdockertests
     volumes_from:
         - buildbotdockertestcontainer
     links:
-        - for-test_buildbotdocker.master:target
-        - for-test_buildbotdocker.slave
+        - buildbotmaster999test:target
+        - buildbotslave999test
 
 
 # Templates

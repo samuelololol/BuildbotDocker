@@ -15,7 +15,7 @@ BuildbotDockerSlavefortest:
         - /var/run/docker.sock:/var/run/docker.sock
 
 BuildbotDockerTester:
-    build: ./tests
+    build: ./buildbotdocker_tests
     volumes_from:
         - buildbotdockertest
     links:

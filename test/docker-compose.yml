@@ -1,29 +1,29 @@
-BuildbotDockerMasterfortest:
+for-test_buildbotdocker.master:
     extends:
         file: ../common/docker-compose.yml
         service: commonmaster
     environment:
         - PROJECT_TITLE=BuildbotDockerForTest
 
-BuildbotDockerSlavefortest:
+for-test_buildbotdocker.slave:
     extends:
         file: ../common/docker-compose.yml
         service: commonslave
     links:
         - BuildbotDockerMasterfortest
 
-BuildbotDockerTester:
+for-test_buildbotdocker-tester:
     build: ./buildbotdockertests
     volumes_from:
         - buildbotdockertestcontainer
     links:
-        - BuildbotDockerMasterfortest:target
-        - BuildbotDockerSlavefortest
+        - for-test_buildbotdocker.master:target
+        - for-test_buildbotdocker.slave
 
 
 # Templates
 # =========
-# <ServiceCamelName>fortest:
+# <Service(-_ separtedly)>fortest:
 #   extends:
 #       file: <deploy docker-compose.yml>
 #       service: <service>
@@ -32,11 +32,11 @@ BuildbotDockerTester:
 #   ...
 #   
 #   
-# <ServiceCamelName>Tester:
-#   build: ./<ServiceCamelName>tests
+# <Service(-_ separtedly)>Tester:
+#   build: ./<Service(-_ separtedly)>tests
 #   volumes_from:
-#     - <ServiceCamelName>test #prepared volume container, built from check*.py
+#     - <Service(-_ separtedly)>test #prepared volume container, built from check*.py
 #   links:
-#     - <ServiceCamelName>fortest
+#     - <Service(-_ separtedly)>fortest
 #     - ...
 

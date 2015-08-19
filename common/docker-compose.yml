@@ -8,6 +8,8 @@ commonmaster:
         - PROJECT_TITLE=BuildbotDocker
         - PROJECT_URL=https://github.com/samuelololol/BuildbotDocker.git
         - PROJECT_TEST_FOLDER=test
+        - TZ=Asia/Taipei
+        - GIT_SSH=/usr/local/bin/git_ssh
     volumes:
         - ~/.ssh:/root/.ssh:ro
 

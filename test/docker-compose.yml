@@ -12,6 +12,7 @@ buildbotslave999test:
     links:
         - buildbotmaster999test:buildbotmaster
 
+#this name will be used in ../common/buildbotdocker.py
 buildbottester999:
     build: ./buildbotdockertests
     volumes_from:

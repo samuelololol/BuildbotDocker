@@ -15,7 +15,7 @@ BuildbotDockerSlavefortest:
         - /var/run/docker.sock:/var/run/docker.sock
 
 BuildbotDockerTester:
-    build: ./buildbotdocker_tests
+    build: ./buildbotdockertests
     volumes_from:
         - buildbotdockertest
     links:
@@ -35,7 +35,7 @@ BuildbotDockerTester:
 #   
 #   
 # <ServiceCamelName>Tester:
-#   build: ./<ServiceCamelName>_tests
+#   build: ./<ServiceCamelName>tests
 #   volumes_from:
 #     - <ServiceCamelName>test #prepared volume container, built from check*.py
 #   links:

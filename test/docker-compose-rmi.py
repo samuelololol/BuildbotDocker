@@ -11,7 +11,8 @@ from docker import Client
 
 def check_image_name(docker, service):
     print 'check_image_name,',
-    pwd = os.path.dirname(os.path.realpath(__file__)).split('/')[-1]
+    #pwd = os.path.dirname(os.path.realpath(__file__)).split('/')[-1]
+    pwd = os.getcwd().split('/')[-1]
     iname = "%s_%s" % (pwd, service)
     if iname in [z for z in [y.encode('utf-8').split(':')[0] for
                        x in docker.images() for
@@ -31,6 +32,7 @@ def remove_images(docker, composefile_name):
             exist, iname = check_image_name(docker, service)
             if exist:
                 docker.remove_image(image=iname, force=True, noprune=False)
+                print '%s image removed' % iname
     except Exception,e:
         print 'type: %s' % type(e)
         print 'args: %s' % e.args

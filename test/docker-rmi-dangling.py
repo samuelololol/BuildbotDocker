@@ -9,7 +9,7 @@ import os
 import docker
 from docker import Client
 
-def remove_images(docker):
+def remove_dangling(docker):
     try:
         dangling_images_ids = \
         [id['Id'].encode('utf-8') for id in docker.images(filters={'dangling': True})]
@@ -23,7 +23,7 @@ def remove_images(docker):
 
 def main():
     docker = Client(base_url='unix://var/run/docker.sock')
-    remove_images(docker)
+    remove_dangling(docker)
 
 if __name__ == '__main__':
     main()

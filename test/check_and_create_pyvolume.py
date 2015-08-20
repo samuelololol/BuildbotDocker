@@ -55,8 +55,13 @@ def main():
     else:
         name = sys.argv[1]
 
-    print 'name: %s' % name
+    #for remove test container's image
+    if name == 'remove':
+        c.remove_image(image=CONTAINER_NAME, force=True, noprune=False)
+        print '%s images removed' % CONTAINER_NAME
+        return
 
+    print 'check container name: %s' % name
     if not check_container_name(c, name):
         if not check_image_name(c, IMAGE_NAME):
             build_image(c, IMAGE_NAME)

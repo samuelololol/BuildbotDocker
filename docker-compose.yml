@@ -3,7 +3,7 @@ buildbotmaster:
         file: ./common/docker-compose.yml
         service: commonmaster
     ports:
-        - "8011:8010"
+        - "8010:8010"
 
 buildbotslave:
     extends:

@@ -35,6 +35,12 @@ BUILDBOT_MASTER_AUTH_PASS = 'buildbot'
 BUILDBOT_URL = "http://localhost:8010/"
 BUILDBOT_DB_URL = "sqlite:///state.sqlite"
 
+_PROJECT_TESTER_SERVICE_NAME = "buildbottester999test"
+_TO_DELETE_IMAGES = "%s_%s" % (PROJECT_TEST_FOLDER, service) for service in 
+                                           ["buildbotmaster999test",
+                                            "buildbotslave999test",
+                                            "buildbottester999test"]
+
 
 
 # ----------
@@ -76,7 +82,7 @@ BUILDBOT_FACTORY_FOR_TEST.addStep(steps.ShellCommand(
     descriptionDone="tested",
     workdir=BUILDSLAVE_BUILD_PATH+'/'+PROJECT_TEST_FOLDER,
     command=["docker-compose", "run", "--rm",
-             "buildbottester999", "./test_runner.sh"]))
+             _PROJECT_TESTER_SERVICE_NAME, "./test_runner.sh"]))
 
 BUILDBOT_FACTORY_FOR_TEST.addStep(steps.ShellCommand(
     name="stop containers",
@@ -87,6 +93,13 @@ BUILDBOT_FACTORY_FOR_TEST.addStep(steps.ShellCommand(
 
 BUILDBOT_FACTORY_FOR_TEST.addStep(steps.ShellCommand(
     name="remove containers",
+    description="removing containers",
+    descriptionDone="removed",
+    workdir=BUILDSLAVE_BUILD_PATH+'/'+PROJECT_TEST_FOLDER,
+    command=["docker-compose", "rm", "-f"]))
+
+BUILDBOT_FACTORY_FOR_TEST.addStep(steps.ShellCommand(
+    name="remove tester image",
     description="removing containers",
     descriptionDone="removed",
     workdir=BUILDSLAVE_BUILD_PATH+'/'+PROJECT_TEST_FOLDER,

@@ -2,3 +2,4 @@ pytest
 requests
 BeautifulSoup
 docker-py
+pyyaml

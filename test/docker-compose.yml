@@ -13,7 +13,7 @@ buildbotslave999test:
         - buildbotmaster999test:buildbotmaster
 
 #this name will be used in ../common/buildbotdocker.py
-buildbottester999:
+buildbottester999test:
     build: ./buildbotdockertests
     volumes_from:
         - buildbotdockertestcontainer

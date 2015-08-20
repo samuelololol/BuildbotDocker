@@ -36,10 +36,10 @@ BUILDBOT_URL = "http://localhost:8010/"
 BUILDBOT_DB_URL = "sqlite:///state.sqlite"
 
 _PROJECT_TESTER_SERVICE_NAME = "buildbottester999test"
-_TO_DELETE_IMAGES = "%s_%s" % (PROJECT_TEST_FOLDER, service) for service in 
+_TO_DELETE_IMAGES = ["%s_%s" % (PROJECT_TEST_FOLDER, service) for service in 
                                            ["buildbotmaster999test",
                                             "buildbotslave999test",
-                                            "buildbottester999test"]
+                                            "buildbottester999test"]]
 
 
 

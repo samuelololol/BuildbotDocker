@@ -6,7 +6,7 @@ but powerful CI system. With every commits pushed, buildbot is triggered new
 build and records the test result on master portal.
 
 ># Basic CI deployment:
->Prepared docker-composed.yml script will deploy a very simple CI environment.
+>Using prepared docker-composed.yml script to deploy a very simple CI environment.
 
 ![basic deployment][1]
 

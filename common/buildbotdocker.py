@@ -81,7 +81,7 @@ BUILDBOT_FACTORY_FOR_TEST.addStep(steps.ShellCommand(
     description="testing",
     descriptionDone="tested",
     workdir=BUILDSLAVE_BUILD_PATH+'/'+PROJECT_TEST_FOLDER,
-    command=["docker-compose", "run",
+    command=["docker-compose", "run", "--rm"
              _PROJECT_TESTER_SERVICE_NAME, "./test_runner.sh"]))
 
 BUILDBOT_FACTORY_FOR_TEST.addStep(steps.ShellCommand(
@@ -105,13 +105,13 @@ BUILDBOT_FACTORY_FOR_TEST.addStep(steps.ShellCommand(
     workdir=BUILDSLAVE_BUILD_PATH+'/'+PROJECT_TEST_FOLDER,
     command=["python", "docker-compose-rmi.py"]))
 
-BUILDBOT_FACTORY_FOR_TEST.addStep(steps.ShellCommand(
-    name="remove tester image",
-    description="removing image",
-    descriptionDone="image removed",
-    command=["python",
-             BUILDSLAVE_BUILD_PATH+"/"+PROJECT_TEST_FOLDER+"/check_and_create_pyvolume.py",
-             "remove"]))
+#BUILDBOT_FACTORY_FOR_TEST.addStep(steps.ShellCommand(
+#    name="remove tester image",
+#    description="removing image",
+#    descriptionDone="image removed",
+#    command=["python",
+#             BUILDSLAVE_BUILD_PATH+"/"+PROJECT_TEST_FOLDER+"/check_and_create_pyvolume.py",
+#             "remove"]))
 
 
 # ------

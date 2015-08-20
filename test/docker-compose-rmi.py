@@ -24,10 +24,16 @@ def check_image_name(docker, service):
         return (False, None)
 
 
-def remove_images(docker, composefile_name):
-    with open(composefile_name, 'r') as ymlfile:
-        cfg = yaml.load(ymlfile)
+def remove_images(docker, composefile_name, dangling=False):
     try:
+        if dangling:
+            dangling_images_ids = \
+            [id['Id'].encode('utf-8') for id in docker.images(filters={'dangling': True})]
+            for id in dangling_images_ids:
+                docker.remove_image(image=id, force=True, noprune=False)
+                print '%s image removed' % id
+        with open(composefile_name, 'r') as ymlfile:
+            cfg = yaml.load(ymlfile)
         for service in cfg:
             exist, iname = check_image_name(docker, service)
             if exist:
@@ -47,7 +53,7 @@ def main():
     else:
         composefile_name =sys.argv[1]
     docker = Client(base_url='unix://var/run/docker.sock')
-    remove_images(docker, composefile_name)
+    remove_images(docker, composefile_name, dangling=True)
 
 if __name__ == '__main__':
     main()

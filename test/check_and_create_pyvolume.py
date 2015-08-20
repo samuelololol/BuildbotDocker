@@ -78,7 +78,7 @@ def main():
     #    create_container(c, name)
     if not check_image_name(c, IMAGE_NAME):
         build_image(c, IMAGE_NAME)
-    recreate_volume_container(docker, CONTAINER_NAME)
+    recreate_volume_container(c, CONTAINER_NAME)
 
 if __name__ == '__main__':
     main()

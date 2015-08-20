@@ -33,8 +33,10 @@ buildbottester999test:
 #   ...
 #   
 #   
+# #this name will be used in ../<buildbotdocker_folder>/buildbotdocker.py
 # <Service(-_ separtedly)>Tester:
 #   build: ./<Service(-_ separtedly)>tests
+    #this name will be used in ../<buildbotdocker_folder>/buildbotdocker.py
 #   volumes_from:
 #     - <Service(-_ separtedly)>test #prepared volume container, built from check*.py
 #   links:

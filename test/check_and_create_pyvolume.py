@@ -57,7 +57,8 @@ def main():
 
     #for remove test container's image
     if name == 'remove':
-        c.remove_image(image=CONTAINER_NAME, force=True, noprune=False)
+        print 'removing %s images' % IMAGE_NAME
+        c.remove_image(image=IMAGE_NAME, force=True, noprune=False)
         print '%s images removed' % CONTAINER_NAME
         return
 

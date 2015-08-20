@@ -13,15 +13,15 @@ CONTAINER_NAME='buildbotdockertestcontainer'
 IMAGE_NAME='buildbotdockertest_image_volume'
 VOLUME_SETTING_FOLDER=IMAGE_NAME
 
-def check_container_name(docker, cname):
-    print 'check_container_name,',
+def recreate_volume_container(docker, cname):
+    print 'recreate_volume_container,',
     if cname in ' '.join([y.encode('utf-8').replace('/', '') for x in 
         docker.containers(all=True) for y in x['Names'] ]):
         print '"%s" container exist' % cname
-        return True
+        remove_container(docker, cname)
     else:
         print '"%s" container not exist' % cname
-        return False
+    create_container(docker, cname)
 
 def check_image_name(docker, iname):
     print 'check_image_name,',
@@ -46,6 +46,12 @@ def build_image(docker, name):
                              rm=True, forcerm=True, nocache=True):
         print json.loads(line).values()[0],
 
+def remove_container(docker, cname):
+    print 'remove container: %s' % cname
+    docker.remove_container(container=cname, force=True)
+    print '%s removed' % cname
+
+
 
 def main():
     global CONTAINER_NAME
@@ -65,12 +71,14 @@ def main():
         print '%s images removed' % CONTAINER_NAME
         return
 
-    print 'check container name: %s' % name
-    if not check_container_name(c, name):
-        if not check_image_name(c, IMAGE_NAME):
-            build_image(c, IMAGE_NAME)
-        create_container(c, name)
-    return
+    #print 'check container name: %s' % name
+    #if not recreate_volume_container(c, name):
+    #    if not check_image_name(c, IMAGE_NAME):
+    #        build_image(c, IMAGE_NAME)
+    #    create_container(c, name)
+    if not check_image_name(c, IMAGE_NAME):
+        build_image(c, IMAGE_NAME)
+    recreate_volume_container(docker, cname)
 
 if __name__ == '__main__':
     main()

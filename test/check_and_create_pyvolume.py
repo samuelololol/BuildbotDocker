@@ -58,6 +58,9 @@ def main():
     #for remove test container's image
     if name == 'remove':
         print 'removing %s images' % IMAGE_NAME
+        if IMAGE_NAME not in [y.encode('utf-8').replace('/', '') for x in c.containers(all=True) for y in x['Names']]:
+            print 'image is not exist'
+            return
         c.remove_image(image=IMAGE_NAME, force=True, noprune=False)
         print '%s images removed' % CONTAINER_NAME
         return

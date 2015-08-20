@@ -103,7 +103,7 @@ BUILDBOT_FACTORY_FOR_TEST.addStep(steps.ShellCommand(
     description="removing images",
     descriptionDone="images removed",
     workdir=BUILDSLAVE_BUILD_PATH+'/'+PROJECT_TEST_FOLDER,
-    command=["python", "docker-compose-rmi"]))
+    command=["python", "docker-compose-rmi.py"]))
 
 BUILDBOT_FACTORY_FOR_TEST.addStep(steps.ShellCommand(
     name="remove tester image",

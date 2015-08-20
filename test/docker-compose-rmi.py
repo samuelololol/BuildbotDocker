@@ -12,8 +12,10 @@ from docker import Client
 def check_image_name(docker, service):
     print 'check_image_name,',
     #pwd = os.path.dirname(os.path.realpath(__file__)).split('/')[-1]
-    pwd = os.getcwd().split('/')[-1]
-    iname = "%s_%s" % (pwd, service)
+    #folder = pwd
+    cwd = os.getcwd().split('/')[-1]
+    folder = cwd
+    iname = "%s_%s" % (folder, service)
     if iname in [z for z in [y.encode('utf-8').split(':')[0] for
                        x in docker.images() for
                        y in x['RepoTags']] if '<none>' not in z]:
@@ -47,11 +49,11 @@ def remove_images(docker, composefile_name, dangling=False):
 def main():
     if len(sys.argv) == 1:
         composefile_name = 'docker-compose.yml'
-    elif len(sys.argv) != 2:
-        print "\n\t$ docker-compose-rmi <docekr-compose.yml>\n"
-        return
+    elif len(sys.argv) == 2:
+        composefile_name = sys.argv[1]
     else:
-        composefile_name =sys.argv[1]
+        print "\n\t$ docker-compose-rmi <docekr-compose.yml file path>\n"
+        return
     docker = Client(base_url='unix://var/run/docker.sock')
     remove_images(docker, composefile_name, dangling=True)
 

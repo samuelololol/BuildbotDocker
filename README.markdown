@@ -11,7 +11,8 @@ build and records the test result on master portal.
 ![basic deployment][1]
 
 ># With dockerized test plan:
->Buildbot Slave has ability to create containers(on host) as well, so users could add their custom dockerized test plan.
+>Buildbot Slave has ability to create containers(on host) as well, so users could 
+execute their custom dockerized test plan.
 
 ![CI_with test deployment][2]
 

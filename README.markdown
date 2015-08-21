@@ -43,7 +43,9 @@ The prepared docker-compose.yml uses pre-built docker image and mounts host dock
 * Docker-compose scritps:
   [docker-compose.yml](https://raw.githubusercontent.com/samuelololol/BuildbotDocker/master/docker-buildbot/docker-compose.yml)
 * Buildbot config:
-  [master.cfg](https://raw.githubusercontent.com/samuelololol/BuildbotDocker/master/docker-buildbot/ubuntu-buildbot-master/master.cfg)
+  [master.cfg](https://raw.githubusercontent.com/samuelololol/BuildbotDocker/master/docker-buildbot/ubuntu-buildbot-master/master.cfg),
+  [buildbotdocker.py](https://raw.githubusercontent.com/samuelololol/BuildbotDocker/master/common/buildbotdocker.py)
+
 
 How to use
 ----------
@@ -53,7 +55,7 @@ Download, edit and run.
 * master.cfg
 * buildbotdocker.py
 
-These 2 files are main core settings for buildbot. The complicated settings are extracted separately from original `master.cfg` into `master.cfg` and `buildbotdocker.py`. To edit the settings, it is necessary for you to consider some aspects:
+These 2 files are main core settings for buildbot. The complicated settings are separately extracted from original `master.cfg` into `master.cfg` and `buildbotdocker.py`. To edit the settings, it is necessary for you to consider some aspects:
 
 1. Deploy scenario: Add deployment steps into builder. It is recommanded using Docker to reproduce clean target environment and to setup the project.
 2. Test scenario: Add test runner scripts into builder. It is depending on how the project do tests. You are able to launch test runner on buildbot slave or do it on clean Docker container(s).

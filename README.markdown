@@ -57,8 +57,8 @@ Download, edit and run.
 
 These 2 files are main core settings for buildbot. The complicated settings are separately extracted from original `master.cfg` into `master.cfg` and `buildbotdocker.py`. To edit the settings, it is necessary for you to consider some aspects:
 
-1. Deploy scenario: Add deployment steps into builder. It is recommanded using Docker to reproduce clean target environment and to setup the project.
-2. Test scenario: Add test runner scripts into builder. It is depending on how the project do tests. You are able to launch test runner on buildbot slave or do it on clean Docker container(s).
+1. Deploy scenario: Add deployment steps into builder. After git-pushed triggered, buildbot will pull latest source code and build. It is recommanded to create a clean docker environment and setup the project in it.
+2. Test scenario: Add test runner scripts into builder. You may launch test runner either on buildbot slave or on clean Docker container(s) created by buildbot slave.
 
 How to launch
 -------------
